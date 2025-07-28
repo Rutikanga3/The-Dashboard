@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+
+@theme{
+
+
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+
+  /* Primary Colors: Light Mode */
+  --color-primarycolor-50: oklch(95.1% 0.014 234);
+  --color-primarycolor-100: oklch(89.5% 0.042 234);
+  --color-primarycolor-200: oklch(83.2% 0.065 234);
+  --color-primarycolor-300: oklch(76.0% 0.093 234);
+  --color-primarycolor-400: oklch(68.5% 0.120 234);
+  --color-primarycolor-500: oklch(60.5% 0.149 234);
+  --color-primarycolor-600: oklch(54.2% 0.149 234);
+  --color-primarycolor-700: oklch(47.5% 0.128 234);
+  --color-primarycolor-800: oklch(39.8% 0.101 234);
+  --color-primarycolor-900: oklch(33.7% 0.086 234)
+
+/* Primary Colors: Dark Mode */
+
+  --color-primarycolor-50: oklch(91.5% 0.018 235);
+  --color-primarycolor-100: oklch(85.0% 0.050 235);
+  --color-primarycolor-200: oklch(78.0% 0.078 235);
+  --color-primarycolor-300: oklch(70.0% 0.110 235);
+  --color-primarycolor-400: oklch(62.0% 0.140 235);
+  --color-primarycolor-500: oklch(52.0% 0.170 235);
+  --color-primarycolor-600: oklch(43.0% 0.165 235);
+  --color-primarycolor-700: oklch(35.0% 0.140 235);
+  --color-primarycolor-800: oklch(28.0% 0.110 235);
+  --color-primarycolor-900: oklch(21.0% 0.090 235);
+}

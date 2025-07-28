@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 
-@theme{
+@theme {
 
 
-    --breakpoint-xs: 480px;
-    --breakpoint-sm: 640px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 1024px;
-    --breakpoint-xl: 1280px;
-    --breakpoint-2xl: 1536px;
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 
   /* Primary Colors: Light Mode */
   --color-primarycolor-50: oklch(95.1% 0.014 234);
@@ -22,10 +22,9 @@
   --color-primarycolor-700: oklch(47.5% 0.128 234);
   --color-primarycolor-800: oklch(39.8% 0.101 234);
   --color-primarycolor-900: oklch(33.7% 0.086 234)
+    /* Primary Colors: Dark Mode */
 
-/* Primary Colors: Dark Mode */
-
-  --color-primarycolor-50: oklch(91.5% 0.018 235);
+    --color-primarycolor-50: oklch(91.5% 0.018 235);
   --color-primarycolor-100: oklch(85.0% 0.050 235);
   --color-primarycolor-200: oklch(78.0% 0.078 235);
   --color-primarycolor-300: oklch(70.0% 0.110 235);
@@ -35,4 +34,19 @@
   --color-primarycolor-700: oklch(35.0% 0.140 235);
   --color-primarycolor-800: oklch(28.0% 0.110 235);
   --color-primarycolor-900: oklch(21.0% 0.090 235);
+}
+
+.light {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.dark {
+  background-color: #111827;
+  /* color: #f9fafb; */
+}
+
+body,
+html {
+  transition: background 0.3s, color 0.3s;
 }

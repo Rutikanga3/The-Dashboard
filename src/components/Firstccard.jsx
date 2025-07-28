@@ -1,15 +1,22 @@
-import React from "react";
-
+import React , { useContext } from "react";
+import { ThemeContext } from "./Context/ThemeContext";
 
 const Firstcards = ({ title, description, icon,iconColor, bgColor }) => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className={`bg-white shadow-md rounded-lg p-6 flex  items-center sm:items-start ${bgColor}`}>
-      <div className={`text-4xl mr-4 ${iconColor} ${bgColor} p-3 rounded-md`}>{icon}</div>
+    <div className={`shadow-md rounded-lg p-6 flex items-center sm:items-start mb-10 ${
+        theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"
+      }`}>
+      <div  className={`text-4xl mr-4 p-3 rounded-md ${
+    bgColor ? bgColor : theme === "dark" ? "bg-gray-700" : "bg-gray-100"
+  } ${iconColor}`}>{icon}</div>
       
-      {/* Title and Description Section */}
+      
       <div className="">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
-        <p className="text-gray-600">{description}</p>
+        <p className={`${
+            theme === "dark" ? "text-gray-400" : "text-gray-600"
+          }`}>{description}</p>
       </div>
     </div>
   );

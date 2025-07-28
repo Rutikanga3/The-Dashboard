@@ -1,13 +1,15 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import Firstcards from './Firstccard'
 import { LuUsers } from "react-icons/lu";
 import { FiPackage } from "react-icons/fi";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io"; 
 import { FaExclamationTriangle } from "react-icons/fa";
+import { ThemeContext } from './Context/ThemeContext';
 
 export default function Cards() {
+   const { theme } = useContext(ThemeContext);
   return (
-    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
     <Firstcards
       icon={<LuUsers/>}
       title='116'

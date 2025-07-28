@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from './Button';
+import { ThemeContext } from './Context/ThemeContext';
+
 
 const users = [
   {
@@ -40,10 +42,12 @@ const statusColors = {
 };
 
 export default function Usertable() {
+  const { theme = 'light' } = useContext(ThemeContext);
+  
   return (
-    <div className="mt-10">
-      <div className="flex flex-wrap justify-between items-center mb-4">
-        <h4 className="text-black font-bold text-lg">Users</h4>
+    <div className={` m-5  rounded-md ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+      <div className="flex flex-wrap justify-between items-center mb-4 p-3">
+        <h4 className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Users</h4>
         <Button
           type="button"
           variant="primary"
@@ -52,9 +56,9 @@ export default function Usertable() {
           Add User
         </Button>
       </div>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded shadow text-sm ">
-          <thead className="text-left text-gray-500">
+      <div className="overflow-x-auto ">
+        <table className={`min-w-full rounded-md shadow p-3 text-sm ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-white text-black'}`}>
+          <thead className={`text-left ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
             <tr className='border-gray-400'>
               <th className="py-2 px-4">User</th>
               <th className="py-2 px-4 hidden sm:table-cell">Role</th>
@@ -65,12 +69,12 @@ export default function Usertable() {
           </thead>
           <tbody className='border-gray-400'>
             {users.map((user, index) => (
-              <tr key={index} className="border-t hover:bg-gray-50">
+              <tr key={index} className={`border-t ${theme === 'dark' ? 'hover:bg-gray-600' : 'hover:bg-gray-50'}`}>
                 <td className="py-2 px-4 flex items-center gap-2">
-                  <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">👤</div>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${theme === 'dark' ? 'bg-gray-600 text-gray-300' : 'bg-gray-200 text-gray-600'}`}>👤</div>
                   <div>
                     <div className="font-medium">{user.name}</div>
-                    <div className="text-gray-400 text-xs">{user.email}</div>
+                    <div className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{user.email}</div>
                   </div>
                 </td>
                 <td className="py-2 px-4 hidden sm:table-cell">
@@ -79,7 +83,7 @@ export default function Usertable() {
                 <td className="py-2 px-4 hidden md:table-cell">
                   <span className={`text-xs px-2 py-1 rounded ${statusColors[user.status]}`}>{user.status}</span>
                 </td>
-                <td className="py-2 px-4 hidden lg:table-cell text-gray-500">{user.lastLogin}</td>
+                <td className={`py-2 px-4 hidden lg:table-cell ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{user.lastLogin}</td>
                 <td className="py-2 px-4">
                   <button className="text-blue-600 hover:underline mr-3">Edit</button>
                   <button className="text-red-500 hover:underline">Delete</button>

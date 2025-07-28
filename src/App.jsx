@@ -1,17 +1,11 @@
-import { useState } from 'react'
+import { ThemeProvider } from './components/Context/ThemeContext'
 import Dashboard from './pages/Dashboard'
-import { ThemeContext } from './components/Context/ThemeContext'
-
 
 function App() {
-  
-
   return (
-    <div>
-    <ThemeContext>
-     <Dashboard/>
-    </ThemeContext>
-    </div>
+    <ThemeProvider>
+    <Dashboard />
+    </ThemeProvider>
   )
 }
 

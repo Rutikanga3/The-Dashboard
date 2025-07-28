@@ -4,7 +4,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 function Overview() {
   return (
-    <div className="bg-primarycolor-500 text-white text-left p-6 rounded-2xl shadow-md mb-6 ml-6">
+    <div className="bg-primarycolor-500 text-white text-left p-6 rounded-2xl shadow-md mb-6 ml-6 mt-6">
       <div className="flex items-center">
         <div className="bg-primarycolor-400 text-white rounded-md h-12 w-12 flex items-center justify-center mr-4">
           <FiPackage className="text-2xl" size={35} />

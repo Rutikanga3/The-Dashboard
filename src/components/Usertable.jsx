@@ -1,34 +1,8 @@
 import React, { useContext } from 'react';
 import Button from './Button';
 import { ThemeContext } from './Context/ThemeContext';
+import { useUser } from '../hooks/useUser';
 
-
-const users = [
-  {
-    name: "John Smith", email: "john.smith@ihuza.com", role: "Admin", status: "Active", lastLogin: "2 hours ago",
-  },
-  {
-    name: "Sarah Johnson", email: "sarah.j@ihuza.com", role: "Manager", status: "Active", lastLogin: "5 hours ago",
-  },
-  {
-    name: "Michael Brown", email: "m.brown@ihuza.com", role: "Staff", status: "Active", lastLogin: "1 day ago",
-  },
-  {
-    name: "Emily Davis", email: "emily.d@ihuza.com", role: "Staff", status: "Inactive", lastLogin: "3 days ago",
-  },
-  {
-    name: "David Wilson", email: "d.wilson@ihuza.com", role: "Staff", status: "Active", lastLogin: "6 hours ago",
-  },
-  {
-    name: "Lisa Anderson", email: "lisa.a@ihuza.com", role: "Manager", status: "Active", lastLogin: "30 min ago",
-  },
-  {
-    name: "Robert Taylor", email: "r.taylor@ihuza.com", role: "Staff", status: "Active", lastLogin: "2 days ago",
-  },
-  {
-    name: "Jennifer Miller", email: "j.miller@ihuza.com", role: "Staff", status: "Active", lastLogin: "4 hours ago",
-  },
-];
 
 const roleColors = {
   Admin: "bg-purple-100 text-purple-700",
@@ -43,7 +17,7 @@ const statusColors = {
 
 export default function Usertable() {
   const { theme = 'light' } = useContext(ThemeContext);
-  
+  const{users} = useUser();
   return (
     <div className={` m-5  rounded-md ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
       <div className="flex flex-wrap justify-between items-center mb-4 p-3">

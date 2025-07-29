@@ -1,5 +1,6 @@
 import React ,{useContext}from 'react'
 import { ThemeContext } from './Context/ThemeContext';
+import { useProduct } from '../hooks/useProduct';
 
 const statusColors = {
   "In Stock": "bg-green-100 text-green-800",
@@ -7,16 +8,10 @@ const statusColors = {
   "Out of Stock": "bg-red-100 text-red-800",
 };
 
-const products = [
-  { name: "MacBook Pro 16\"", category: "Laptops", date: "Dec 10, 2024", status: "In Stock" },
-  { name: "Dell XPS 13", category: "Laptops", date: "Dec 9, 2024", status: "In Stock" },
-  { name: "iPhone 15 Pro", category: "Mobile", date: "Dec 8, 2024", status: "Low Stock" },
-  { name: "iPad Air", category: "Tablets", date: "Dec 7, 2024", status: "In Stock" },
-  { name: "Surface Pro 9", category: "Tablets", date: "Dec 6, 2024", status: "Out of Stock" },
-];
 
 export default function Secondcard() {
   const { theme } = useContext(ThemeContext);
+  const { products } = useProduct();
   return (
      <div  className={`${
             theme === "dark" ? "text-white bg-gray-800" : "text-gray-600 bg-white"

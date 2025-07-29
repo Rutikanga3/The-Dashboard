@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 import Secondcard from '../components/Secondcard';
 import Usertable from '../components/Usertable';
 import { ThemeContext } from '../components/Context/ThemeContext';
+import { ProductProvider } from '../components/Context/ProductContext';
+import { UserProvider } from '../components/Context/UserContext';
 
 
 export default function Dashboard() {
@@ -21,8 +23,14 @@ export default function Dashboard() {
         <div className={`${theme === 'dark'? 'bg-gray-900':'bg-white'}`} >
           <Overview />
           <Cards />
-          <Secondcard  />
-          <Usertable  />
+          <ProductProvider>
+            <Secondcard/>
+          </ProductProvider>
+          <UserProvider>
+            <Usertable/>
+          </UserProvider>
+
+          
 
         </div>
       </div>

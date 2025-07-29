@@ -19,12 +19,13 @@ function Navbar() {
       </div>
       <div className="flex-grow"></div>
       <div className="flex items-center space-x-4">
-        <MdOutlineDarkMode  onClick={toggleTheme}className={`"text-2xl text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`} />
-        <CiSettings className={`"text-2xl text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`} />
-        <MdNotificationsNone className={`"text-2xl text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`}/>
+        <MdOutlineDarkMode  onClick={toggleTheme}className={`"text-2xl text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`}size={20} />
+        <CiSettings className={`"text-2xl text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`} size={20} />
+        <MdNotificationsNone className={`"text-2xl text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`} size={20}/>
+        <div className="w-8 h-8 bg-blue-500 rounded-full text-white flex items-center justify-center font-bold"><LuUser/></div>
 
         <span className={`"text-gray-700 text-sm sm:text-base" ${theme== 'dark' ? 'text-white font-normal':'text-black font-medium'}`}>Admin@ihuza.com</span>
-        <div className="w-8 h-8 bg-blue-500 rounded-full text-white flex items-center justify-center font-bold"><LuUser/></div>
+        
       </div>
     </div>
   );

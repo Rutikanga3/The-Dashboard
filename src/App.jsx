@@ -1,11 +1,14 @@
 import { ThemeProvider } from './components/Context/ThemeContext'
 import Dashboard from './pages/Dashboard'
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 
 function App() {
   return (
-    <ThemeProvider>
+   <Router>
+     <ThemeProvider>
     <Dashboard />
     </ThemeProvider>
+   </Router>
   )
 }
 

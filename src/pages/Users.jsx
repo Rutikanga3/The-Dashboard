@@ -29,7 +29,7 @@ export default function Users() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col md:ml-64">
         <Navbar />
-        <div className="overflow-x-auto ml-5">
+        <div className="overflow-x-auto ml-5 mt-10">
           <table className={`min-w-full rounded-md shadow p-3 text-sm ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-white text-black'}`}>
             <thead className={`text-left ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
               <tr className="border-gray-400">

@@ -1,44 +1,126 @@
-import React, { useContext } from 'react';
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"; 
-import { ThemeContext } from '../components/Context/ThemeContext';
+import { useState } from 'react'
+import InPuts from '../components/InPuts'
+import { useNavigate } from 'react-router-dom'
+import { useLoggedin } from '../hooks/useLoggedin'
+
 
 export default function Login() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const navigate = useNavigate()
+  const {user, setIsLoggedIn } = useLoggedin()
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+  const [errors, setErrors] = useState({})
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+  
+ const handleSubmit = (e) => {
+  e.preventDefault()
+  
+  const formErrors = {}
+  if (!formData.email) {
+    formErrors.email = 'Email is required'
+  }
+  if (!formData.password) {
+    formErrors.password = 'Password is required'
+  }
+  
+  if (Object.keys(formErrors).length > 0) {
+    setErrors(formErrors)
+    return
+  }
+  
+  const foundUser = user.find(
+    user => user.email === formData.email 
+    && user.password === formData.password
+  )
+  
+  if (foundUser) {
+    localStorage.setItem('currentUser', JSON.stringify({
+      id: foundUser.id,
+      name: foundUser.name,
+      email: foundUser.email
+    }));
+    
+    setIsLoggedIn(true);
+    
+    setFormData({
+      email: '',
+      password: ''
+    });
+    setErrors({});
+    
+    navigate('/dashboard');
+  } else {
+    alert('user not found or invalid credentials')
+    setIsLoggedIn(false);
+  }
+}
 
   return (
-    <div className={`h-screen flex items-center justify-center px-4 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-white'}`}>
-      {theme === 'dark' ? (
-        <MdOutlineLightMode
-          onClick={toggleTheme}
-          className="absolute top-4 right-4 text-2xl cursor-pointer text-white hover:text-gray-400 transition duration-300"
-        />
-      ) : (
-        <MdOutlineDarkMode
-          onClick={toggleTheme}
-          className="absolute top-4 right-4 text-2xl cursor-pointer text-black hover:text-gray-700 transition duration-300"
-        />
-      )}
+    <div className='flex flex-col lg:flex-row min-h-screen'>
+      <div className='flex lg:w-1/2 bg-primarycolor-700 items-center justify-center p-4 lg:p-8 min-h-[30vh] lg:min-h-screen '>
+        <div className='text-center text-white'>
+          <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 lg:mb-4'>Welcome to iHUZA</h1>
+          <p className='text-base sm:text-lg lg:text-xl text-primary-200'>Inventory Management System</p>
+        </div>
+      </div>
+      
+      <div className='flex-1 lg:w-1/2 bg-primary-200 dark:bg-primarycolor-200 flex items-center justify-center p-4 sm:p-6 lg:p-8'>
+        <div className='w-full max-w-sm sm:max-w-md'>
+          <h2 className='text-xl sm:text-2xl font-bold mb-4 lg:mb-6 text-primary-50 dark:text-white text-center'>Please Login!</h2>
+          <form onSubmit={handleSubmit} className=' dark:bg-primarycolor-400 p-4 sm:p-6 rounded-lg shadow-xl border border-gray-300 dark:border-primarycolor-100'>
+            
+            <div className='mb-4 text-white '>
+              <InPuts
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                className={`w-full text-white ${errors.email ? 'border-red-500' : 'border-primary-300'}`}
+                variant={`${errors.email ? 'secondary' : 'primary'}`}
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {errors.email && <p className='text-red-500 text-xs sm:text-sm mt-1'>{errors.email}</p>}
+            </div>
 
-      <div className="w-full max-w-md p-6 shadow-lg rounded-lg bg-white dark:bg-gray-800">
-        <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
-        <form>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Email</label>
-            <input
-              type="email"
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Password</label>
-            <input
-              type="password"
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
-            />
-          </div>
-          <button className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">Login</button>
-        </form>
+            <div className='mb-6 text-white '>
+              <InPuts
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                className={`w-full text-white  ${errors.password ? 'border-red-500' : 'border-primary-300'}`}
+                variant={`${errors.password ? 'secondary' : 'primary'}`}
+                value={formData.password}
+                onChange={handleChange}
+              />
+              {errors.password && <p className='text-red-500 text-xs sm:text-sm mt-1'>{errors.password}</p>}
+            </div>
+
+            <button 
+              type="submit" 
+              className='w-full bg-primary-600 hover:bg-primary-700 text-white py-2.5 sm:py-3 px-4 rounded-md transition-colors duration-200 font-medium text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
+            >
+              Login
+            </button>
+
+            <div className='mt-4 text-center text-white '>
+              <a href="#" className='text-xs sm:text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300'>
+                Forgot your password?
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  );
+  )
 }

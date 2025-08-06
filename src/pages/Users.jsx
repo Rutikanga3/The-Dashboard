@@ -21,12 +21,9 @@ export default function Users() {
 
   return (
     <div className={`flex h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-      {/* Sidebar */}
       <div>
         <Sidebar />
       </div>
-
-      {/* Main Content */}
       <div className="flex-1 flex flex-col md:ml-64">
         <Navbar />
         <div className="overflow-x-auto ml-5 mt-10">

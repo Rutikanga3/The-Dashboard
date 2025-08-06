@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"; // Import both icons
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"; 
 import { ThemeContext } from '../components/Context/ThemeContext';
 
 export default function Login() {
-  const { theme, toggleTheme } = useContext(ThemeContext); // Access toggleTheme from context
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div className={`h-screen flex items-center justify-center px-4 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-white'}`}>
-      {/* Theme Toggle Icon */}
       {theme === 'dark' ? (
         <MdOutlineLightMode
           onClick={toggleTheme}

@@ -9,7 +9,6 @@ export default function Products() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { products } = useProduct();
 
-  // Define statusColors mapping
   const statusColors = {
     "In Stock": "bg-green-100 text-green-800",
     "Low Stock": "bg-yellow-100 text-yellow-800",
@@ -18,7 +17,6 @@ export default function Products() {
 
   return (
     <div className={`flex h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-      {/* Sidebar */}
       <div
         className={`fixed z-20 inset-y-0 left-0 transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -26,8 +24,6 @@ export default function Products() {
       >
         <Sidebar/>
       </div>
-
-      {/* Main Content */}
       <div className="flex-1 flex  flex-col sm:ml-5">
         <Navbar />
         <div className={`flex-1 p-4 sm:p-6 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
